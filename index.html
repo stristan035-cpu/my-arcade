@@ -4,102 +4,68 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d1c">
-  <title>Star Catcher — My Arcade</title>
+  <title>My Arcade</title>
   <style>
-    :root {
-      color-scheme: dark;
-      font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, "Segoe UI", sans-serif;
-      color: #f7fbff;
-      background: #080d1c;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background:
-        radial-gradient(ellipse at 50% 0%, #35427c 0%, #192341 42%, #080d1c 100%);
-    }
-
-    main {
-      width: min(100%, 720px);
-      padding: clamp(32px, 8vw, 76px) 24px;
-      text-align: center;
-    }
-
-    .mark {
-      width: 76px;
-      height: 76px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 26px;
-      border: 2px solid #ffffff66;
-      border-radius: 23px;
-      background: linear-gradient(145deg, #43f5de, #7864ff 54%, #ff4fc8);
-      box-shadow: 0 0 38px #5de8f877;
-      font-size: 40px;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: #70edee;
-      font-size: 12px;
-      font-weight: 850;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(48px, 11vw, 88px);
-      line-height: .98;
-      letter-spacing: -.065em;
-      text-shadow: 0 0 28px #a16cff99;
-    }
-
-    .description {
-      max-width: 440px;
-      margin: 22px auto 34px;
-      color: #c0cce4;
-      font-size: clamp(16px, 3vw, 19px);
-      line-height: 1.6;
-    }
-
-    .play {
-      min-width: 210px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 17px 30px;
-      border: 1px solid #ffffffaa;
-      border-radius: 14px;
-      color: #111936;
-      background: linear-gradient(110deg, #57f5dc, #78c8ff 48%, #d889ff);
-      box-shadow: 0 0 30px #48e8df77, 0 6px 0 #5242a5;
-      font-size: 20px;
-      font-weight: 950;
-      text-decoration: none;
-      transition: transform .15s, filter .15s, box-shadow .15s;
-    }
-
-    .play:hover { transform: translateY(-3px); filter: brightness(1.1); }
-    .play:active { transform: translateY(3px); box-shadow: 0 0 16px #48e8df66; }
-    .play:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
-    .play span { font-size: 17px; }
+    :root{color-scheme:dark;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,"Segoe UI",sans-serif;color:#f7fbff;background:#080d1c}
+    *{box-sizing:border-box}
+    body{position:relative;isolation:isolate;min-height:100vh;margin:0;display:grid;place-items:center;padding:24px;overflow-x:hidden;background:radial-gradient(ellipse at 50% -10%,#45579a 0%,transparent 46%),radial-gradient(ellipse at 8% 58%,#174b67aa 0%,transparent 35%),radial-gradient(ellipse at 94% 78%,#55296299 0%,transparent 38%),linear-gradient(160deg,#192341 0%,#0d162d 54%,#080d1c 100%)}
+    body:before,body:after{position:fixed;inset:0;z-index:-1;pointer-events:none;content:""}
+    body:before{opacity:.27;background-image:linear-gradient(#9dd8ff14 1px,transparent 1px),linear-gradient(90deg,#9dd8ff14 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+    body:after{opacity:.68;background-image:radial-gradient(circle,#d7f8ff 1px,transparent 1.6px),radial-gradient(circle,#9d9bff 1.3px,transparent 2px),radial-gradient(ellipse at center,transparent 57%,#67f5e522 57.2%,transparent 57.6%,transparent 64%,#d86aff22 64.2%,transparent 64.6%);background-size:97px 101px,157px 149px,100% 100%;background-position:11px 19px,68px 43px,center;animation:night-drift 38s linear infinite}
+    @keyframes night-drift{to{background-position:108px 120px,225px 192px,center}}
+    main{position:relative;width:min(100%,760px);padding:clamp(32px,8vw,76px) 24px;text-align:center}
+    .mark{width:76px;height:76px;display:grid;place-items:center;margin:0 auto 26px;border:2px solid #ffffff66;border-radius:23px;background:linear-gradient(145deg,#43f5de,#7864ff 54%,#ff4fc8);box-shadow:0 0 38px #5de8f877;font-size:40px}
+    .eyebrow{margin:0 0 12px;color:#70edee;font-size:12px;font-weight:850;letter-spacing:.2em;text-transform:uppercase}
+    h1{margin:0;font-size:clamp(48px,11vw,88px);line-height:.98;letter-spacing:-.065em;text-shadow:0 0 28px #a16cff99}
+    .description{max-width:440px;margin:22px auto 34px;color:#c0cce4;font-size:clamp(16px,3vw,19px);line-height:1.6}
+    .games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;max-width:760px;margin:0 auto}
+    .play{position:relative;isolation:isolate;overflow:hidden;min-height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:18px;border:1px solid #ffffffaa;border-radius:18px;color:#111936;background:linear-gradient(135deg,#57f5dc,#78c8ff 52%,#d889ff);box-shadow:0 0 30px #48e8df55,0 7px 0 #5242a5;font-size:clamp(19px,3.5vw,24px);font-weight:950;text-decoration:none;transition:transform .15s,filter .15s}
+    .play:before{position:absolute;z-index:-1;inset:0;opacity:.38;pointer-events:none;content:""}
+    .play:nth-child(1):before{background:radial-gradient(circle at 53% 27%,#fff 0 4px,transparent 5px),repeating-linear-gradient(180deg,transparent 0 8px,#13294b22 8px 13px,transparent 13px 22px),linear-gradient(90deg,transparent 49.5%,#19325833 49.5% 50.5%,transparent 50.5%)}
+    .play:nth-child(2):before{background:radial-gradient(circle at 50% 29%,#fff 0 5px,transparent 6px),linear-gradient(90deg,#6baaff33 0 49%,#ffffff33 49% 51%,#ff9c6833 51%)}
+    .play:nth-child(3):before{background:radial-gradient(circle at 20% 25%,#fff 0 2px,transparent 3px),radial-gradient(circle at 76% 40%,#fff9 0 3px,transparent 4px),radial-gradient(circle at 32% 68%,#fff9 0 2px,transparent 3px),radial-gradient(circle at 82% 82%,#fff 0 2px,transparent 3px)}
+    .play:nth-child(4):before{background:linear-gradient(90deg,transparent 29%,#14243a55 29% 71%,transparent 71%),repeating-linear-gradient(180deg,transparent 0 17px,#fff9 17px 25px,transparent 25px 42px)}
+    .play:nth-child(5):before{background:repeating-linear-gradient(0deg,#fff2 0 1px,transparent 1px 14px),repeating-linear-gradient(90deg,#fff2 0 1px,transparent 1px 14px),linear-gradient(135deg,transparent 40%,#7754d533 40% 60%,transparent 60%)}
+    .play:nth-child(6):before{background:radial-gradient(ellipse at 75% 28%,transparent 0 17px,#fff8 18px 20px,transparent 21px 27px,#fff5 28px 30px,transparent 31px),radial-gradient(circle at 75% 28%,#fff8 0 9px,transparent 10px)}
+    .play:nth-child(2){background:linear-gradient(135deg,#ff91d6,#d889ff 50%,#78c8ff);box-shadow:0 0 30px #e875e355,0 7px 0 #6945a5}
+    .play:hover{transform:translateY(-4px);filter:brightness(1.08)}.play:active{transform:translateY(3px);box-shadow:0 0 16px #48e8df66}.play:focus-visible{outline:3px solid #fff;outline-offset:5px}
+    .play>*{position:relative;z-index:1}.game-icon{width:58px;height:58px;display:block;padding:9px;border:1px solid #ffffff99;border-radius:17px;background:#ffffff55;box-shadow:0 5px 14px #17254c25;filter:drop-shadow(0 2px 3px #10204a55)}.game-name{line-height:1.1}.play small{font-size:12px;font-weight:750;opacity:.76;letter-spacing:.04em}.best-score{margin-top:4px;padding:5px 9px;border:1px solid #17234330;border-radius:999px;background:#fff8;font-size:11px;font-weight:850;letter-spacing:.02em}
+    .play:nth-child(3){background:linear-gradient(135deg,#ffe876,#ffb95b 54%,#ff8ec6);box-shadow:0 0 30px #ffc84d55,0 7px 0 #a55b79}
+    .play:nth-child(4){background:linear-gradient(135deg,#8af7cd,#58d8bd 52%,#77bdff);box-shadow:0 0 30px #48e8df55,0 7px 0 #397c91}
+    .play:nth-child(5){background:linear-gradient(135deg,#c7a0ff,#9c8bff 52%,#71c9ff);box-shadow:0 0 30px #a16cff55,0 7px 0 #554a9b}
+    .play:nth-child(6){background:linear-gradient(135deg,#ff8bbd,#ff6e85 52%,#ffc56c);box-shadow:0 0 30px #ff618055,0 7px 0 #9b425d}
+    @media(max-width:520px){main{padding:36px 16px}.games{grid-template-columns:1fr}.play{min-height:145px}}
+    @media(prefers-reduced-motion:reduce){body:after{animation:none}}
   </style>
 </head>
 <body>
   <main>
-    <div class="mark" aria-hidden="true">✦</div>
+    <div class="mark" aria-hidden="true">↔</div>
     <p class="eyebrow">Welcome to my arcade</p>
-    <h1>Star Catcher</h1>
-    <p class="description">Slide your basket beneath the falling stars and catch 10 to make a wish come true.</p>
-    <a class="play" href="game.html"><span aria-hidden="true">▶</span> Play</a>
+    <h1>My Arcade</h1>
+    <p class="description">Choose a game and jump into the arcade.</p>
+    <nav class="games" aria-label="Choose a game">
+      <a class="play" href="game.html"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5v38M10 16h5v16h-5zM33 16h5v16h-5z" fill="none" stroke="#182445" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="4" fill="#182445"/></svg><span class="game-name">Neon Pong</span><small>Player vs. bot</small><span class="best-score" data-score="pong">Best: —</span></a>
+      <a class="play" href="game2.html"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5v38M10 16h5v16h-5zM33 16h5v16h-5z" fill="none" stroke="#351a46" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="24" r="4" fill="#351a46"/><path d="M6 8h7M35 40h7" stroke="#351a46" stroke-width="3" stroke-linecap="round"/></svg><span class="game-name">Neon Pong 2</span><small>Two-player local match</small><span class="best-score" data-score="pong2">P1 0 · P2 0</span></a>
+      <a class="play" href="classic-games.html?mode=stars"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 4 5.8 12.2L43 18l-9.5 9.4 2.2 13.2L24 34.4l-11.7 6.2 2.2-13.2L5 18l13.2-1.8L24 4Z" fill="#182445" stroke="#fff9c9" stroke-width="2" stroke-linejoin="round"/><path d="m9 5 1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z" fill="#fff"/></svg><span class="game-name">Star Catcher</span><small>Catch the falling stars</small><span class="best-score" data-score="stars">Best: —</span></a>
+      <a class="play" href="classic-games.html?mode=racer"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m15 18 3-8h12l3 8 5 4v15h-5v-4H15v4h-5V22l5-4Z" fill="#173c47" stroke="#f2fff9" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 18h14l-2-5h-10l-2 5ZM15 26h5m8 0h5" fill="none" stroke="#9df9df" stroke-width="3" stroke-linecap="round"/><circle cx="17" cy="28" r="2" fill="#fff"/><circle cx="31" cy="28" r="2" fill="#fff"/></svg><span class="game-name">Neon Racer</span><small>Dodge traffic and race</small><span class="best-score" data-score="racer">Best: —</span></a>
+      <a class="play" href="classic-games.html?mode=quest"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 4 16 12-6 23H14L8 16 24 4Z" fill="#38236d" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><path d="m24 12 7 5-3 10-4 6-4-6-3-10 7-5Z" fill="#ffe77d" stroke="#fff4bf" stroke-width="2" stroke-linejoin="round"/><path d="M12 39h24" stroke="#77f7e5" stroke-width="3" stroke-linecap="round"/></svg><span class="game-name">Pixel Quest</span><small>Jump, explore, collect gems</small><span class="best-score" data-score="quest">Best: —</span></a>
+      <a class="play" href="classic-games.html?mode=blast"><svg class="game-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 5 9 10-2-3 10 8 6-10 4-1 11-9-6-9 6-1-11-10-4 8-6-3-10 10 2 5-9Z" fill="#54234e" stroke="#fff0bf" stroke-width="2.5" stroke-linejoin="round"/><path d="m24 16 5 12h-10l5-12Zm-3 16-3 5m9-5 3 5" fill="none" stroke="#ffd67b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="game-name">Space Blast</span><small>Defend the star system</small><span class="best-score" data-score="blast">Best: —</span></a>
+    </nav>
   </main>
+  <script>
+    (()=>{
+      const read=(key)=>{try{return Math.max(0,Number(localStorage.getItem(key))||0)}catch{return 0}};
+      const scores={
+        pong:`Best: ${read('neonPongBestScore')}`,
+        pong2:`P1 ${read('neonPong2BestP1')} · P2 ${read('neonPong2BestP2')}`,
+        stars:`Best: ${read('arcadeBest_stars')}/10`,
+        racer:`Best: ${read('arcadeBest_racer').toFixed(1)}s`,
+        quest:`Best: ${read('arcadeBest_quest')}/15`,
+        blast:`Best: ${read('arcadeBest_blast')}/10`
+      };
+      document.querySelectorAll('[data-score]').forEach(el=>{el.textContent=scores[el.dataset.score]});
+    })();
+  </script>
 </body>
 </html>
